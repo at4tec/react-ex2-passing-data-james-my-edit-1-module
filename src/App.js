@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import "./style.css";
+
 
 
 const profiles = [
@@ -92,36 +92,23 @@ const movies = {
 };
 
 
+
+
 class App extends Component {
   render() {
     return (
-       
-        <>
+      <>
           <h2>How Popular is Your Favorite Movie?james</h2>
-          <PopularMovies 
-          profiles={profiles} 
-          users={users} 
-          movies={movies} />
-        </>
-    );
-  }
-}
 
-
-
-
-class PopularMovies extends Component {
-  render() {
-    const moviesArr = Object.values(movies);
-    return (
-      <div className="PopularMovies-container">
-        {moviesArr.map(movie => (
-          <div key={movie.id} className="PopularMovies-cell">
-            <h3>{movie.name}</h3>
-            <UserList movieID={movie.id} users={users} profiles={profiles} />
+        { Object.values(movies).map(m => 
+          <div>
+            
+            <h3>{m.name}</h3>
+           
+            <UserList movieID={m.id} users={users} profiles={profiles} />
           </div>
-        ))}
-      </div>
+      )}
+      </>
     );
   }
 }
@@ -130,6 +117,7 @@ class PopularMovies extends Component {
 
 class UserList extends Component {
   render() {
+    
     const { movieID} = this.props;
     const filteredProfiles = profiles.filter(
       profile => Number(profile.favoriteMovieID) === movieID
@@ -140,15 +128,16 @@ class UserList extends Component {
       return <p>None of the current users liked this movie</p>;
     }
 
+
     return (
-      <div>
+      <>
         <p>Liked by:</p>
         <ul>
           {filteredProfiles.map(profile => (
             <li key={profile.userID}>{users[profile.userID].name}</li>
           ))}
         </ul>
-      </div>
+      </>
     );
   }
 }
