@@ -68,28 +68,28 @@ const users = {
   }
 };
 
-const movies = {
-  1: {
+const movies = [
+  {},{
     id: 1,
     name: "Planet Earth 1"
   },
-  2: {
+  {
     id: 2,
     name: "Selma"
   },
-  3: {
+  {
     id: 3,
     name: "Million Dollar Baby"
   },
-  4: {
+   {
     id: 4,
     name: "Forrest Gump"
   },
-  5: {
+   {
     id: 5,
     name: "Get Out"
   }
-};
+]
 
 
 
@@ -100,11 +100,9 @@ class App extends Component {
       <>
           <h2>How Popular is Your Favorite Movie?james</h2>
 
-        { Object.values(movies).map(m => 
+        { movies.map(m => 
           <div>
-            
-            <h3>{m.name}</h3>
-           
+            <h3>{m.name}</h3>         
             <UserList movieID={m.id}  />
           </div>
       )}
@@ -113,27 +111,24 @@ class App extends Component {
   }
 }
 
-
-
 class UserList extends Component {
   render() {
-    
     const { movieID} = this.props;
     const filteredProfiles = profiles.filter(
-      profile => Number(profile.favoriteMovieID) === movieID
+      p=> p.favoriteMovieID == movieID
     );
-
-    // console.log(filteredProfiles);
+     //console.log(filteredProfiles);
     if (!filteredProfiles || filteredProfiles.length === 0) {
       return <p>None of the current users liked this movie</p>;
     }
-
     return (
       <>
         <p>Liked by:</p>
         <ul>
-          {filteredProfiles.map(profile => (
-            <li key={profile.userID}>{users[profile.userID].name}</li>
+          {filteredProfiles.map(p => (
+            <li>
+              {users[p.userID].name}
+            </li>
           ))}
         </ul>
       </>
