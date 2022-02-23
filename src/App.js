@@ -105,7 +105,7 @@ class App extends Component {
             
             <h3>{m.name}</h3>
            
-            <UserList movieID={m.id} users={users} profiles={profiles} />
+            <UserList movieID={m.id}  />
           </div>
       )}
       </>
@@ -127,7 +127,6 @@ class UserList extends Component {
     if (!filteredProfiles || filteredProfiles.length === 0) {
       return <p>None of the current users liked this movie</p>;
     }
-
 
     return (
       <>
