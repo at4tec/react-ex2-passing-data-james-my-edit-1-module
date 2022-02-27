@@ -113,14 +113,15 @@ class App extends Component {
 
 class UserList extends Component {
   render() {
+    const filteredProfiles = []
     const { movieID} = this.props;
-    const filteredProfiles = profiles.filter(
-      p=> p.favoriteMovieID == movieID
-    );
+   profiles.map(
+            p=> {if(p.favoriteMovieID == movieID){
+              filteredProfiles.push(p)
+            }}
+    )
      //console.log(filteredProfiles);
-    if (!filteredProfiles || filteredProfiles.length === 0) {
-      return <p>None of the current users liked this movie</p>;
-    }
+
     return (
       <>
         <p>Liked by:</p>
