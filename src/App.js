@@ -98,12 +98,13 @@ class App extends Component {
   render() {
     return (
       <>
-          <h2>How Popular is Your Favorite Movie?james</h2>
+          <h2>How Popular is Your Favorite Movie?james </h2>
 
         { movies.map(m => 
           <div>
             <h3>{m.name}</h3>         
             <UserList movieID={m.id}  />
+
           </div>
       )}
       </>
@@ -120,15 +121,16 @@ class UserList extends Component {
               filteredProfiles.push(p)
             }}
     )
-     //console.log(filteredProfiles);
+     console.log(filteredProfiles);
 
     return (
       <>
+      {filteredProfiles.name}
         <p>Liked by:</p>
         <ul>
-          {filteredProfiles.map(p => (
+          {filteredProfiles.map(f => (
             <li>
-              {users[p.userID].name}
+              {users[f.userID].name}
             </li>
           ))}
         </ul>
