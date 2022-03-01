@@ -101,11 +101,11 @@ class App extends Component {
           <h2>How Popular is Your Favorite Movie?james </h2>
 
         { movies.map(m => 
-          <div>
-            <h3>{m.name}</h3>         
+          <ul>
+            <h2>{m.name}</h2>         
             <UserList movieID={m.id}  />
 
-          </div>
+          </ul>
       )}
       </>
     );
@@ -115,17 +115,19 @@ class App extends Component {
 class UserList extends Component {
   render() {
     const filteredProfiles = []
-    const movieID= this.props.movieID;
-   profiles.map(
-            p=> {if(p.favoriteMovieID == movieID){
+    
+   profiles.map(p=> {
+              if(p.favoriteMovieID ==       this.props.movieID)
+              {
               filteredProfiles.push(p)
-            }}
-    )
+              }
+          }
+           )
      console.log(filteredProfiles);
 
     return (
       <>
-        <p>Liked by:</p>
+        <h3>Liked by:</h3>
         <ul>
           {
           filteredProfiles.map(f => (
