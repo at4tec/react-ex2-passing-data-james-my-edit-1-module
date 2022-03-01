@@ -115,7 +115,7 @@ class App extends Component {
 class UserList extends Component {
   render() {
     const filteredProfiles = []
-    const { movieID} = this.props;
+    const movieID= this.props.movieID;
    profiles.map(
             p=> {if(p.favoriteMovieID == movieID){
               filteredProfiles.push(p)
@@ -125,14 +125,15 @@ class UserList extends Component {
 
     return (
       <>
-      {filteredProfiles.name}
         <p>Liked by:</p>
         <ul>
-          {filteredProfiles.map(f => (
+          {
+          filteredProfiles.map(f => (
             <li>
               {users[f.userID].name}
             </li>
-          ))}
+          ))
+          }
         </ul>
       </>
     );
